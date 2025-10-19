@@ -26,7 +26,6 @@ const taskSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Optional: Auto-update `updatedAt` on save
 taskSchema.pre("save", function (next) {
   this.updatedAt = Date.now();
   next();

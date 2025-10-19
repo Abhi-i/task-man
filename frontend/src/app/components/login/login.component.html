@@ -11,7 +11,7 @@
       <input matInput type="password" formControlName="password" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Login</button>
+    <button mat-raised-button [disabled]="loginForm.invalid" color="primary" type="submit">Login</button>
   </form>
   <p><a routerLink="/register">Don't have an account? Register</a></p>
 </mat-card>

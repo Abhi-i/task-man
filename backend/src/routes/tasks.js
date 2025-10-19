@@ -4,7 +4,7 @@ import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// 🆕 Create Task
+//Create task
 router.post("/", protect, async (req, res) => {
   try {
     const { title, description } = req.body;
@@ -24,7 +24,7 @@ router.post("/", protect, async (req, res) => {
   }
 });
 
-// 📋 Get All Tasks for Logged-In User
+//Get alll tasks for logged-in user
 router.get("/", protect, async (req, res) => {
   try {
     const tasks = await Task.find({ user: req.user._id }).sort({ createdAt: -1 });
@@ -35,7 +35,7 @@ router.get("/", protect, async (req, res) => {
   }
 });
 
-// ✏️ Update Task
+//Update task
 router.put("/:id", protect, async (req, res) => {
   try {
     const { title, description, status } = req.body;
@@ -55,7 +55,7 @@ router.put("/:id", protect, async (req, res) => {
   }
 });
 
-// 🗑️ Delete Task
+//Delete Task
 router.delete("/:id", protect, async (req, res) => {
   try {
     const task = await Task.findOneAndDelete({

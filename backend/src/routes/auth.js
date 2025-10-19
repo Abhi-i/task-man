@@ -4,14 +4,12 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
-// 🔑 Helper: Generate JWT Token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
 };
 
-// 🧩 Register User
 router.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -38,7 +36,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// 🔐 Login User
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;

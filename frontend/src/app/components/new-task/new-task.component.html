@@ -1,0 +1,34 @@
+<h2>Create New Task</h2>
+<form [formGroup]="taskForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="pending">Pending</mat-option>
+      <mat-option value="completed">Completed</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="buttons">
+    <button
+  mat-raised-button
+  color="primary"
+  type="button"
+  [disabled]="taskForm.invalid"
+  (click)="createTask()"
+>
+  Create
+</button>
+
+    <button mat-button type="button" (click)="close()">Cancel</button>
+  </div>
+</form>

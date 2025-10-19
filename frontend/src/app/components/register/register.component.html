@@ -3,7 +3,7 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
-      <input matInput formControlName="name" />
+      <input matInput formControlName="username" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -14,9 +14,15 @@
     <mat-form-field appearance="fill">
       <mat-label>Password</mat-label>
       <input matInput type="password" formControlName="password" />
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit">Register</button>
-  </form>
-  <p><a routerLink="/login">Already have an account? Login</a></p>
+      </mat-form-field>
+      
+      <button mat-raised-button [disabled]="registerForm.invalid || isLoading" color="primary" type="submit">
+        <ng-container *ngIf="!isLoading; else showLoading">Register</ng-container>
+      </button>
+      
+      <ng-template #showLoading>
+        <mat-spinner diameter="20" mode="indeterminate" color="accent"></mat-spinner>
+      </ng-template>
+      </form>
+      <p><a routerLink="/login">Already have an account? Login</a></p>
 </mat-card>
