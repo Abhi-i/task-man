@@ -62,4 +62,12 @@ export class TasksComponent implements OnInit {
       error: err => console.error('Failed to update task', err.message),
     });
   }
+
+  deleteTask(taskId: string) {
+    this.tasks = this.tasks.filter(task => task.id !== taskId);
+    if (this.taskForms[taskId]) {
+      delete this.taskForms[taskId];
+    }
+    this.apiService.delete(`${APIS.tasks}/${taskId}`).subscribe();
+  }
 }
